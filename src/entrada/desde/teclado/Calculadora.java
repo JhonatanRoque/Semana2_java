@@ -17,8 +17,8 @@ public class Calculadora {
             
             System.out.println("El resultado de la suma es              : " + sumar(cantidad1, cantidad2));
             System.out.println("El resultado de la resta es             : " + restar(cantidad1, cantidad2));
-            System.out.println("El resultado de la multiplicaciòn es   : " + multiplicar(cantidad1, cantidad2));
-            System.out.println("El resultado de la division es    : " + dividir(cantidad1, cantidad2));
+            System.out.println("El resultado de la multiplicaciòn es    : " + multiplicar(cantidad1, cantidad2));
+            System.out.println("El resultado de la division es          : " + dividir(cantidad1, cantidad2));
             
         }
         catch (Exception e){ //Captura del error
