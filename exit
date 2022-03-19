@@ -1,0 +1,1136 @@
+[1mdiff --git a/build/classes/Ejercicios/Ejercicio1.class b/build/classes/Ejercicios/Ejercicio1.class[m
+[1mindex fab3f26..8cdd8e9 100644[m
+Binary files a/build/classes/Ejercicios/Ejercicio1.class and b/build/classes/Ejercicios/Ejercicio1.class differ
+[1mdiff --git a/build/classes/developers/InteresSimpleMetodoConParametro.class b/build/classes/developers/InteresSimpleMetodoConParametro.class[m
+[1mindex d5b5ce1..e82ec9d 100644[m
+Binary files a/build/classes/developers/InteresSimpleMetodoConParametro.class and b/build/classes/developers/InteresSimpleMetodoConParametro.class differ
+[1mdiff --git a/build/classes/developers/Metodos.class b/build/classes/developers/Metodos.class[m
+[1mindex d5ec285..da9b5cf 100644[m
+Binary files a/build/classes/developers/Metodos.class and b/build/classes/developers/Metodos.class differ
+[1mdiff --git a/build/classes/developers/Practica_sem2.class b/build/classes/developers/Practica_sem2.class[m
+[1mindex 24d2277..9e84a69 100644[m
+Binary files a/build/classes/developers/Practica_sem2.class and b/build/classes/developers/Practica_sem2.class differ
+[1mdiff --git a/build/classes/developers/metodosConParametros.class b/build/classes/developers/metodosConParametros.class[m
+[1mindex 714c55a..3d8624e 100644[m
+Binary files a/build/classes/developers/metodosConParametros.class and b/build/classes/developers/metodosConParametros.class differ
+[1mdiff --git a/build/classes/entrada/desde/teclado/BilletesCinco.class b/build/classes/entrada/desde/teclado/BilletesCinco.class[m
+[1mindex 3419548..8167ec7 100644[m
+Binary files a/build/classes/entrada/desde/teclado/BilletesCinco.class and b/build/classes/entrada/desde/teclado/BilletesCinco.class differ
+[1mdiff --git a/build/classes/entrada/desde/teclado/Calculadora.class b/build/classes/entrada/desde/teclado/Calculadora.class[m
+[1mindex 34ae868..b629790 100644[m
+Binary files a/build/classes/entrada/desde/teclado/Calculadora.class and b/build/classes/entrada/desde/teclado/Calculadora.class differ
+[1mdiff --git a/build/classes/entrada/desde/teclado/CalcularDai.class b/build/classes/entrada/desde/teclado/CalcularDai.class[m
+[1mindex c50be7e..a884496 100644[m
+Binary files a/build/classes/entrada/desde/teclado/CalcularDai.class and b/build/classes/entrada/desde/teclado/CalcularDai.class differ
+[1mdiff --git a/nbproject/build-impl.xml b/nbproject/build-impl.xml[m
+[1mindex 945c36e..c6efa0c 100644[m
+[1m--- a/nbproject/build-impl.xml[m
+[1m+++ b/nbproject/build-impl.xml[m
+[36m@@ -19,7 +19,7 @@[m [mis divided into following sections:[m
+   - cleanup[m
+ [m
+         -->[m
+[31m-<project xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxrpc="http://www.netbeans.org/ns/j2se-project/jax-rpc" basedir=".." default="default" name="Semana2_java-impl">[m
+[32m+[m[32m<project xmlns:if="ant:if" xmlns:j2seproject1="http://www.netbeans.org/ns/j2se-project/1" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxrpc="http://www.netbeans.org/ns/j2se-project/jax-rpc" xmlns:unless="ant:unless" basedir=".." default="default" name="Semana2_java-impl">[m
+     <fail message="Please build using Ant 1.8.0 or higher.">[m
+         <condition>[m
+             <not>[m
+[36m@@ -46,14 +46,79 @@[m [mis divided into following sections:[m
+         <property file="${user.properties.file}"/>[m
+         <!-- The two properties below are usually overridden -->[m
+         <!-- by the active platform. Just a fallback. -->[m
+[31m-        <property name="default.javac.source" value="1.6"/>[m
+[31m-        <property name="default.javac.target" value="1.6"/>[m
+[32m+[m[32m        <property name="default.javac.source" value="1.8"/>[m
+[32m+[m[32m        <property name="default.javac.target" value="1.8"/>[m
+     </target>[m
+     <target depends="-pre-init,-init-private,-init-user" name="-init-project">[m
+         <property file="nbproject/configs/${config}.properties"/>[m
+         <property file="nbproject/project.properties"/>[m
+     </target>[m
+[31m-    <target depends="-pre-init,-init-private,-init-user,-init-project,-init-macrodef-property" name="-do-init">[m
+[32m+[m[32m    <target name="-init-modules-supported">[m
+[32m+[m[32m        <condition property="modules.supported.internal" value="true">[m
+[32m+[m[32m            <not>[m
+[32m+[m[32m                <matches pattern="1\.[0-8](\..*)?" string="${javac.source}"/>[m
+[32m+[m[32m            </not>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-init-modules-supported" if="modules.supported.internal" name="-init-macrodef-modulename">[m
+[32m+[m[32m        <macrodef name="modulename" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[32m+[m[32m            <attribute name="property"/>[m
+[32m+[m[32m            <attribute name="sourcepath"/>[m
+[32m+[m[32m            <sequential>[m
+[32m+[m[32m                <loadresource property="@{property}" quiet="true">[m
+[32m+[m[32m                    <javaresource classpath="@{sourcepath}" name="module-info.java" parentFirst="false"/>[m
+[32m+[m[32m                    <filterchain>[m
+[32m+[m[32m                        <stripjavacomments/>[m
+[32m+[m[32m                        <linecontainsregexp>[m
+[32m+[m[32m                            <regexp pattern="module .* \{"/>[m
+[32m+[m[32m                        </linecontainsregexp>[m
+[32m+[m[32m                        <tokenfilter>[m
+[32m+[m[32m                            <linetokenizer/>[m
+[32m+[m[32m                            <replaceregex flags="s" pattern="(\s*module\s+)(\S*)(\s*\{.*)" replace="\2"/>[m
+[32m+[m[32m                        </tokenfilter>[m
+[32m+[m[32m                        <striplinebreaks/>[m
+[32m+[m[32m                    </filterchain>[m
+[32m+[m[32m                </loadresource>[m
+[32m+[m[32m            </sequential>[m
+[32m+[m[32m        </macrodef>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-init-modules-supported,-init-macrodef-modulename" if="modules.supported.internal" name="-init-source-module-properties">[m
+[32m+[m[32m        <fail message="Java 9 support requires Ant 1.10.0 or higher.">[m
+[32m+[m[32m            <condition>[m
+[32m+[m[32m                <not>[m
+[32m+[m[32m                    <antversion atleast="1.10.0"/>[m
+[32m+[m[32m                </not>[m
+[32m+[m[32m            </condition>[m
+[32m+[m[32m        </fail>[m
+[32m+[m[32m        <j2seproject3:modulename property="module.name" sourcepath="${src.dir}"/>[m
+[32m+[m[32m        <condition property="named.module.internal">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="module.name"/>[m
+[32m+[m[32m                <length length="0" string="${module.name}" when="greater"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition property="unnamed.module.internal">[m
+[32m+[m[32m            <not>[m
+[32m+[m[32m                <isset property="named.module.internal"/>[m
+[32m+[m[32m            </not>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <property name="javac.modulepath" value=""/>[m
+[32m+[m[32m        <property name="run.modulepath" value="${javac.modulepath}"/>[m
+[32m+[m[32m        <property name="module.build.classes.dir" value="${build.classes.dir}"/>[m
+[32m+[m[32m        <property name="debug.modulepath" value="${run.modulepath}"/>[m
+[32m+[m[32m        <property name="javac.upgrademodulepath" value=""/>[m
+[32m+[m[32m        <property name="run.upgrademodulepath" value="${javac.upgrademodulepath}"/>[m
+[32m+[m[32m        <condition else="" property="javac.systemmodulepath.cmd.line.arg" value="--system '${javac.systemmodulepath}'">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="javac.systemmodulepath"/>[m
+[32m+[m[32m                <length length="0" string="${javac.systemmodulepath}" when="greater"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <property name="dist.jlink.dir" value="${dist.dir}/jlink"/>[m
+[32m+[m[32m        <property name="dist.jlink.output" value="${dist.jlink.dir}/${application.title}"/>[m
+[32m+[m[32m        <property name="module.name" value=""/>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-pre-init,-init-private,-init-user,-init-project,-init-macrodef-property,-init-modules-supported" name="-do-init">[m
+         <property name="platform.java" value="${java.home}/bin/java"/>[m
+         <available file="${manifest.file}" property="manifest.available"/>[m
+         <condition property="splashscreen.available">[m
+[36m@@ -76,7 +141,9 @@[m [mis divided into following sections:[m
+             <and>[m
+                 <isset property="javac.profile"/>[m
+                 <length length="0" string="${javac.profile}" when="greater"/>[m
+[31m-                <matches pattern="((1\.[89])|9)(\..*)?" string="${javac.source}"/>[m
+[32m+[m[32m                <not>[m
+[32m+[m[32m                    <matches pattern="1\.[0-7](\..*)?" string="${javac.source}"/>[m
+[32m+[m[32m                </not>[m
+             </and>[m
+         </condition>[m
+         <condition property="do.archive">[m
+[36m@@ -87,15 +154,6 @@[m [mis divided into following sections:[m
+                 <istrue value="${not.archive.disabled}"/>[m
+             </or>[m
+         </condition>[m
+[31m-        <condition property="do.mkdist">[m
+[31m-            <and>[m
+[31m-                <isset property="do.archive"/>[m
+[31m-                <isset property="libs.CopyLibs.classpath"/>[m
+[31m-                <not>[m
+[31m-                    <istrue value="${mkdist.disabled}"/>[m
+[31m-                </not>[m
+[31m-            </and>[m
+[31m-        </condition>[m
+         <condition property="do.archive+manifest.available">[m
+             <and>[m
+                 <isset property="manifest.available"/>[m
+[36m@@ -250,11 +308,80 @@[m [mis divided into following sections:[m
+             </sequential>[m
+         </macrodef>[m
+     </target>[m
+[31m-    <target depends="-init-ap-cmdline-properties" if="ap.supported.internal" name="-init-macrodef-javac-with-processors">[m
+[32m+[m[32m    <target depends="-init-ap-cmdline-properties,-init-source-module-properties" if="modules.supported.internal" name="-init-macrodef-javac-with-module">[m
+[32m+[m[32m        <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[32m+[m[32m            <attribute default="${src.dir}" name="srcdir"/>[m
+[32m+[m[32m            <attribute default="${build.classes.dir}" name="destdir"/>[m
+[32m+[m[32m            <attribute default="${javac.classpath}" name="classpath"/>[m
+[32m+[m[32m            <attribute default="${javac.modulepath}" name="modulepath"/>[m
+[32m+[m[32m            <attribute default="${javac.upgrademodulepath}" name="upgrademodulepath"/>[m
+[32m+[m[32m            <attribute default="${javac.processorpath}" name="processorpath"/>[m
+[32m+[m[32m            <attribute default="${javac.processormodulepath}" name="processormodulepath"/>[m
+[32m+[m[32m            <attribute default="${build.generated.sources.dir}/ap-source-output" name="apgeneratedsrcdir"/>[m
+[32m+[m[32m            <attribute default="${includes}" name="includes"/>[m
+[32m+[m[32m            <attribute default="${excludes}" name="excludes"/>[m
+[32m+[m[32m            <attribute default="${javac.debug}" name="debug"/>[m
+[32m+[m[32m            <attribute default="${empty.dir}" name="sourcepath" unless:set="named.module.internal"/>[m
+[32m+[m[32m            <attribute default="${src.dir}" if:set="named.module.internal" name="sourcepath"/>[m
+[32m+[m[32m            <attribute default="${empty.dir}" name="gensrcdir"/>[m
+[32m+[m[32m            <element name="customize" optional="true"/>[m
+[32m+[m[32m            <sequential>[m
+[32m+[m[32m                <condition property="warn.excludes.internal">[m
+[32m+[m[32m                    <and>[m
+[32m+[m[32m                        <isset property="named.module.internal"/>[m
+[32m+[m[32m                        <length length="0" string="@{excludes}" trim="true" when="greater"/>[m
+[32m+[m[32m                    </and>[m
+[32m+[m[32m                </condition>[m
+[32m+[m[32m                <echo if:set="warn.excludes.internal" level="warning" message="The javac excludes are not supported in the JDK 9 Named Module."/>[m
+[32m+[m[32m                <property location="${build.dir}/empty" name="empty.dir"/>[m
+[32m+[m[32m                <mkdir dir="${empty.dir}"/>[m
+[32m+[m[32m                <mkdir dir="@{apgeneratedsrcdir}"/>[m
+[32m+[m[32m                <condition property="processormodulepath.set">[m
+[32m+[m[32m                    <resourcecount count="0" when="greater">[m
+[32m+[m[32m                        <path>[m
+[32m+[m[32m                            <pathelement path="@{processormodulepath}"/>[m
+[32m+[m[32m                        </path>[m
+[32m+[m[32m                    </resourcecount>[m
+[32m+[m[32m                </condition>[m
+[32m+[m[32m                <javac debug="@{debug}" deprecation="${javac.deprecation}" destdir="@{destdir}" encoding="${source.encoding}" excludes="@{excludes}" fork="${javac.fork}" includeantruntime="false" includes="@{includes}" source="${javac.source}" sourcepath="@{sourcepath}" srcdir="@{srcdir}" target="${javac.target}" tempdir="${java.io.tmpdir}">[m
+[32m+[m[32m                    <src>[m
+[32m+[m[32m                        <dirset dir="@{gensrcdir}" erroronmissingdir="false">[m
+[32m+[m[32m                            <include name="*"/>[m
+[32m+[m[32m                        </dirset>[m
+[32m+[m[32m                    </src>[m
+[32m+[m[32m                    <classpath>[m
+[32m+[m[32m                        <path path="@{classpath}"/>[m
+[32m+[m[32m                    </classpath>[m
+[32m+[m[32m                    <modulepath>[m
+[32m+[m[32m                        <path path="@{modulepath}"/>[m
+[32m+[m[32m                    </modulepath>[m
+[32m+[m[32m                    <upgrademodulepath>[m
+[32m+[m[32m                        <path path="@{upgrademodulepath}"/>[m
+[32m+[m[32m                    </upgrademodulepath>[m
+[32m+[m[32m                    <compilerarg line="${javac.systemmodulepath.cmd.line.arg}"/>[m
+[32m+[m[32m                    <compilerarg line="${javac.profile.cmd.line.arg}"/>[m
+[32m+[m[32m                    <compilerarg line="${javac.compilerargs}"/>[m
+[32m+[m[32m                    <compilerarg if:set="processormodulepath.set" value="--processor-module-path"/>[m
+[32m+[m[32m                    <compilerarg if:set="processormodulepath.set" path="@{processormodulepath}"/>[m
+[32m+[m[32m                    <compilerarg unless:set="processormodulepath.set" value="-processorpath"/>[m
+[32m+[m[32m                    <compilerarg path="@{processorpath}:${empty.dir}" unless:set="processormodulepath.set"/>[m
+[32m+[m[32m                    <compilerarg line="${ap.processors.internal}"/>[m
+[32m+[m[32m                    <compilerarg line="${annotation.processing.processor.options}"/>[m
+[32m+[m[32m                    <compilerarg value="-s"/>[m
+[32m+[m[32m                    <compilerarg path="@{apgeneratedsrcdir}"/>[m
+[32m+[m[32m                    <compilerarg line="${ap.proc.none.internal}"/>[m
+[32m+[m[32m                    <customize/>[m
+[32m+[m[32m                </javac>[m
+[32m+[m[32m            </sequential>[m
+[32m+[m[32m        </macrodef>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-init-ap-cmdline-properties,-init-source-module-properties" if="ap.supported.internal" name="-init-macrodef-javac-with-processors" unless="modules.supported.internal">[m
+         <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+             <attribute default="${src.dir}" name="srcdir"/>[m
+             <attribute default="${build.classes.dir}" name="destdir"/>[m
+             <attribute default="${javac.classpath}" name="classpath"/>[m
+[32m+[m[32m            <attribute default="${javac.modulepath}" name="modulepath"/>[m
+[32m+[m[32m            <attribute default="${javac.upgrademodulepath}" name="upgrademodulepath"/>[m
+             <attribute default="${javac.processorpath}" name="processorpath"/>[m
+             <attribute default="${build.generated.sources.dir}/ap-source-output" name="apgeneratedsrcdir"/>[m
+             <attribute default="${includes}" name="includes"/>[m
+[36m@@ -291,11 +418,13 @@[m [mis divided into following sections:[m
+             </sequential>[m
+         </macrodef>[m
+     </target>[m
+[31m-    <target depends="-init-ap-cmdline-properties" name="-init-macrodef-javac-without-processors" unless="ap.supported.internal">[m
+[32m+[m[32m    <target depends="-init-ap-cmdline-properties,-init-source-module-properties" name="-init-macrodef-javac-without-processors" unless="ap.supported.internal">[m
+         <macrodef name="javac" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+             <attribute default="${src.dir}" name="srcdir"/>[m
+             <attribute default="${build.classes.dir}" name="destdir"/>[m
+             <attribute default="${javac.classpath}" name="classpath"/>[m
+[32m+[m[32m            <attribute default="${javac.modulepath}" name="modulepath"/>[m
+[32m+[m[32m            <attribute default="${javac.upgrademodulepath}" name="upgrademodulepath"/>[m
+             <attribute default="${javac.processorpath}" name="processorpath"/>[m
+             <attribute default="${build.generated.sources.dir}/ap-source-output" name="apgeneratedsrcdir"/>[m
+             <attribute default="${includes}" name="includes"/>[m
+[36m@@ -324,7 +453,7 @@[m [mis divided into following sections:[m
+             </sequential>[m
+         </macrodef>[m
+     </target>[m
+[31m-    <target depends="-init-macrodef-javac-with-processors,-init-macrodef-javac-without-processors" name="-init-macrodef-javac">[m
+[32m+[m[32m    <target depends="-init-macrodef-javac-with-module,-init-macrodef-javac-with-processors,-init-macrodef-javac-without-processors" name="-init-macrodef-javac">[m
+         <macrodef name="depend" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+             <attribute default="${src.dir}" name="srcdir"/>[m
+             <attribute default="${build.classes.dir}" name="destdir"/>[m
+[36m@@ -379,59 +508,99 @@[m [mis divided into following sections:[m
+         <property name="test.binarytestincludes" value=""/>[m
+         <property name="test.binaryexcludes" value=""/>[m
+     </target>[m
+[31m-    <target if="${nb.junit.single}" name="-init-macrodef-junit-single" unless="${nb.junit.batch}">[m
+[31m-        <macrodef name="junit" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[32m+[m[32m    <target depends="-init-modules-supported" if="modules.supported.internal" name="-init-macrodef-junit-prototype-with-module">[m
+[32m+[m[32m        <macrodef name="junit-prototype" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+             <attribute default="${includes}" name="includes"/>[m
+             <attribute default="${excludes}" name="excludes"/>[m
+[31m-            <attribute default="**" name="testincludes"/>[m
+[31m-            <attribute default="" name="testmethods"/>[m
+[31m-            <element name="customize" optional="true"/>[m
+[32m+[m[32m            <element name="customizePrototype" optional="true"/>[m
+             <sequential>[m
+                 <property name="junit.forkmode" value="perTest"/>[m
+                 <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">[m
+[31m-                    <test methods="@{testmethods}" name="@{testincludes}" todir="${build.test.results.dir}"/>[m
+                     <syspropertyset>[m
+                         <propertyref prefix="test-sys-prop."/>[m
+                         <mapper from="test-sys-prop.*" to="*" type="glob"/>[m
+                     </syspropertyset>[m
+[32m+[m[32m                    <classpath>[m
+[32m+[m[32m                        <path path="${run.test.classpath}"/>[m
+[32m+[m[32m                    </classpath>[m
+[32m+[m[32m                    <modulepath>[m
+[32m+[m[32m                        <path path="${run.test.modulepath}"/>[m
+[32m+[m[32m                    </modulepath>[m
+                     <formatter type="brief" usefile="false"/>[m
+                     <formatter type="xml"/>[m
+[32m+[m[32m                    <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>[m
+                     <jvmarg value="-ea"/>[m
+[31m-                    <customize/>[m
+[32m+[m[32m                    <jvmarg line="${run.test.jvmargs}"/>[m
+[32m+[m[32m                    <customizePrototype/>[m
+                 </junit>[m
+             </sequential>[m
+         </macrodef>[m
+     </target>[m
+[31m-    <target depends="-init-test-properties" if="${nb.junit.batch}" name="-init-macrodef-junit-batch" unless="${nb.junit.single}">[m
+[31m-        <macrodef name="junit" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[32m+[m[32m    <target depends="-init-modules-supported" name="-init-macrodef-junit-prototype-without-module" unless="modules.supported.internal">[m
+[32m+[m[32m        <macrodef name="junit-prototype" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+             <attribute default="${includes}" name="includes"/>[m
+             <attribute default="${excludes}" name="excludes"/>[m
+[31m-            <attribute default="**" name="testincludes"/>[m
+[31m-            <attribute default="" name="testmethods"/>[m
+[31m-            <element name="customize" optional="true"/>[m
+[32m+[m[32m            <element name="customizePrototype" optional="true"/>[m
+             <sequential>[m
+                 <property name="junit.forkmode" value="perTest"/>[m
+                 <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">[m
+[31m-                    <batchtest todir="${build.test.results.dir}">[m
+[31m-                        <fileset dir="${test.src.dir}" excludes="@{excludes},${excludes}" includes="@{includes}">[m
+[31m-                            <filename name="@{testincludes}"/>[m
+[31m-                        </fileset>[m
+[31m-                        <fileset dir="${build.test.classes.dir}" excludes="@{excludes},${excludes},${test.binaryexcludes}" includes="${test.binaryincludes}">[m
+[31m-                            <filename name="${test.binarytestincludes}"/>[m
+[31m-                        </fileset>[m
+[31m-                    </batchtest>[m
+                     <syspropertyset>[m
+                         <propertyref prefix="test-sys-prop."/>[m
+                         <mapper from="test-sys-prop.*" to="*" type="glob"/>[m
+                     </syspropertyset>[m
+[32m+[m[32m                    <classpath>[m
+[32m+[m[32m                        <path path="${run.test.classpath}"/>[m
+[32m+[m[32m                    </classpath>[m
+                     <formatter type="brief" usefile="false"/>[m
+                     <formatter type="xml"/>[m
+[32m+[m[32m                    <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>[m
+                     <jvmarg value="-ea"/>[m
+[31m-                    <customize/>[m
+[32m+[m[32m                    <customizePrototype/>[m
+                 </junit>[m
+             </sequential>[m
+         </macrodef>[m
+     </target>[m
+[32m+[m[32m    <target depends="-init-test-properties,-init-macrodef-junit-prototype-with-module,-init-macrodef-junit-prototype-without-module" if="${nb.junit.single}" name="-init-macrodef-junit-single" unless="${nb.junit.batch}">[m
+[32m+[m[32m        <macrodef name="junit" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[32m+[m[32m            <attribute default="${includes}" name="includes"/>[m
+[32m+[m[32m            <attribute default="${excludes}" name="excludes"/>[m
+[32m+[m[32m            <attribute default="**" name="testincludes"/>[m
+[32m+[m[32m            <attribute default="" name="testmethods"/>[m
+[32m+[m[32m            <element name="customize" optional="true"/>[m
+[32m+[m[32m            <sequential>[m
+[32m+[m[32m                <j2seproject3:junit-prototype>[m
+[32m+[m[32m                    <customizePrototype>[m
+[32m+[m[32m                        <test methods="@{testmethods}" name="@{testincludes}" todir="${build.test.results.dir}"/>[m
+[32m+[m[32m                        <customize/>[m
+[32m+[m[32m                    </customizePrototype>[m
+[32m+[m[32m                </j2seproject3:junit-prototype>[m
+[32m+[m[32m            </sequential>[m
+[32m+[m[32m        </macrodef>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-init-test-properties,-init-macrodef-junit-prototype-with-module,-init-macrodef-junit-prototype-without-module" if="${nb.junit.batch}" name="-init-macrodef-junit-batch" unless="${nb.junit.single}">[m
+[32m+[m[32m        <macrodef name="junit" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[32m+[m[32m            <attribute default="${includes}" name="includes"/>[m
+[32m+[m[32m            <attribute default="${excludes}" name="excludes"/>[m
+[32m+[m[32m            <attribute default="**" name="testincludes"/>[m
+[32m+[m[32m            <attribute default="" name="testmethods"/>[m
+[32m+[m[32m            <element name="customize" optional="true"/>[m
+[32m+[m[32m            <sequential>[m
+[32m+[m[32m                <j2seproject3:junit-prototype>[m
+[32m+[m[32m                    <customizePrototype>[m
+[32m+[m[32m                        <batchtest todir="${build.test.results.dir}">[m
+[32m+[m[32m                            <fileset dir="${test.src.dir}" excludes="@{excludes},${excludes}" includes="@{includes}">[m
+[32m+[m[32m                                <filename name="@{testincludes}"/>[m
+[32m+[m[32m                            </fileset>[m
+[32m+[m[32m                            <fileset dir="${build.test.classes.dir}" excludes="@{excludes},${excludes},${test.binaryexcludes}" includes="${test.binaryincludes}">[m
+[32m+[m[32m                                <filename name="${test.binarytestincludes}"/>[m
+[32m+[m[32m                            </fileset>[m
+[32m+[m[32m                        </batchtest>[m
+[32m+[m[32m                        <customize/>[m
+[32m+[m[32m                    </customizePrototype>[m
+[32m+[m[32m                </j2seproject3:junit-prototype>[m
+[32m+[m[32m            </sequential>[m
+[32m+[m[32m        </macrodef>[m
+[32m+[m[32m    </target>[m
+     <target depends="-init-macrodef-junit-init,-init-macrodef-junit-single, -init-macrodef-junit-batch" if="${junit.available}" name="-init-macrodef-junit"/>[m
+     <target if="${testng.available}" name="-init-macrodef-testng">[m
+         <macrodef name="testng" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[36m@@ -456,6 +625,10 @@[m [mis divided into following sections:[m
+                         <propertyref prefix="test-sys-prop."/>[m
+                         <mapper from="test-sys-prop.*" to="*" type="glob"/>[m
+                     </propertyset>[m
+[32m+[m[32m                    <classpath>[m
+[32m+[m[32m                        <path path="${run.test.classpath}"/>[m
+[32m+[m[32m                    </classpath>[m
+[32m+[m[32m                    <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>[m
+                     <customize/>[m
+                 </testng>[m
+             </sequential>[m
+[36m@@ -510,10 +683,6 @@[m [mis divided into following sections:[m
+             <sequential>[m
+                 <j2seproject3:test-impl excludes="@{excludes}" includes="@{includes}" testincludes="@{testincludes}" testmethods="@{testmethods}">[m
+                     <customize>[m
+[31m-                        <classpath>[m
+[31m-                            <path path="${run.test.classpath}"/>[m
+[31m-                        </classpath>[m
+[31m-                        <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>[m
+                         <jvmarg line="${run.jvmargs}"/>[m
+                         <jvmarg line="${run.jvmargs.ide}"/>[m
+                     </customize>[m
+[36m@@ -521,74 +690,20 @@[m [mis divided into following sections:[m
+             </sequential>[m
+         </macrodef>[m
+     </target>[m
+[31m-    <target if="${junit.available}" name="-init-macrodef-junit-debug" unless="${nb.junit.batch}">[m
+[31m-        <macrodef name="junit-debug" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[31m-            <attribute default="${includes}" name="includes"/>[m
+[31m-            <attribute default="${excludes}" name="excludes"/>[m
+[31m-            <attribute default="**" name="testincludes"/>[m
+[31m-            <attribute default="" name="testmethods"/>[m
+[31m-            <element name="customize" optional="true"/>[m
+[31m-            <sequential>[m
+[31m-                <property name="junit.forkmode" value="perTest"/>[m
+[31m-                <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">[m
+[31m-                    <test methods="@{testmethods}" name="@{testincludes}" todir="${build.test.results.dir}"/>[m
+[31m-                    <syspropertyset>[m
+[31m-                        <propertyref prefix="test-sys-prop."/>[m
+[31m-                        <mapper from="test-sys-prop.*" to="*" type="glob"/>[m
+[31m-                    </syspropertyset>[m
+[31m-                    <formatter type="brief" usefile="false"/>[m
+[31m-                    <formatter type="xml"/>[m
+[31m-                    <jvmarg value="-ea"/>[m
+[31m-                    <jvmarg line="${debug-args-line}"/>[m
+[31m-                    <jvmarg value="-Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>[m
+[31m-                    <customize/>[m
+[31m-                </junit>[m
+[31m-            </sequential>[m
+[31m-        </macrodef>[m
+[31m-    </target>[m
+[31m-    <target depends="-init-test-properties" if="${nb.junit.batch}" name="-init-macrodef-junit-debug-batch">[m
+[31m-        <macrodef name="junit-debug" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[31m-            <attribute default="${includes}" name="includes"/>[m
+[31m-            <attribute default="${excludes}" name="excludes"/>[m
+[31m-            <attribute default="**" name="testincludes"/>[m
+[31m-            <attribute default="" name="testmethods"/>[m
+[31m-            <element name="customize" optional="true"/>[m
+[31m-            <sequential>[m
+[31m-                <property name="junit.forkmode" value="perTest"/>[m
+[31m-                <junit dir="${work.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" forkmode="${junit.forkmode}" showoutput="true" tempdir="${build.dir}">[m
+[31m-                    <batchtest todir="${build.test.results.dir}">[m
+[31m-                        <fileset dir="${test.src.dir}" excludes="@{excludes},${excludes}" includes="@{includes}">[m
+[31m-                            <filename name="@{testincludes}"/>[m
+[31m-                        </fileset>[m
+[31m-                        <fileset dir="${build.test.classes.dir}" excludes="@{excludes},${excludes},${test.binaryexcludes}" includes="${test.binaryincludes}">[m
+[31m-                            <filename name="${test.binarytestincludes}"/>[m
+[31m-                        </fileset>[m
+[31m-                    </batchtest>[m
+[31m-                    <syspropertyset>[m
+[31m-                        <propertyref prefix="test-sys-prop."/>[m
+[31m-                        <mapper from="test-sys-prop.*" to="*" type="glob"/>[m
+[31m-                    </syspropertyset>[m
+[31m-                    <formatter type="brief" usefile="false"/>[m
+[31m-                    <formatter type="xml"/>[m
+[31m-                    <jvmarg value="-ea"/>[m
+[31m-                    <jvmarg line="${debug-args-line}"/>[m
+[31m-                    <jvmarg value="-Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>[m
+[31m-                    <customize/>[m
+[31m-                </junit>[m
+[31m-            </sequential>[m
+[31m-        </macrodef>[m
+[31m-    </target>[m
+[31m-    <target depends="-init-macrodef-junit-debug,-init-macrodef-junit-debug-batch" if="${junit.available}" name="-init-macrodef-junit-debug-impl">[m
+[32m+[m[32m    <target depends="-init-macrodef-junit" if="${junit.available}" name="-init-macrodef-junit-debug-impl">[m
+         <macrodef name="test-debug-impl" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+             <attribute default="${includes}" name="includes"/>[m
+             <attribute default="${excludes}" name="excludes"/>[m
+             <attribute default="**" name="testincludes"/>[m
+             <attribute default="" name="testmethods"/>[m
+[31m-            <element implicit="true" name="customize" optional="true"/>[m
+[32m+[m[32m            <element name="customizeDebuggee" optional="true"/>[m
+             <sequential>[m
+[31m-                <j2seproject3:junit-debug excludes="@{excludes}" includes="@{includes}" testincludes="@{testincludes}" testmethods="@{testmethods}">[m
+[31m-                    <customize/>[m
+[31m-                </j2seproject3:junit-debug>[m
+[32m+[m[32m                <j2seproject3:junit excludes="@{excludes}" includes="@{includes}" testincludes="@{testincludes}" testmethods="@{testmethods}">[m
+[32m+[m[32m                    <customize>[m
+[32m+[m[32m                        <jvmarg value="-agentlib:jdwp=transport=${debug-transport},address=${jpda.address}"/>[m
+[32m+[m[32m                        <customizeDebuggee/>[m
+[32m+[m[32m                    </customize>[m
+[32m+[m[32m                </j2seproject3:junit>[m
+             </sequential>[m
+         </macrodef>[m
+     </target>[m
+[36m@@ -607,14 +722,14 @@[m [mis divided into following sections:[m
+                 <delete dir="${build.test.results.dir}" quiet="true"/>[m
+                 <mkdir dir="${build.test.results.dir}"/>[m
+                 <j2seproject3:debug classname="org.testng.TestNG" classpath="${debug.test.classpath}">[m
+[31m-                    <customize>[m
+[32m+[m[32m                    <customizeDebuggee>[m
+                         <customize2/>[m
+                         <jvmarg value="-ea"/>[m
+                         <arg line="${testng.debug.mode}"/>[m
+                         <arg line="-d ${build.test.results.dir}"/>[m
+                         <arg line="-listener org.testng.reporters.VerboseReporter"/>[m
+                         <arg line="${testng.cmd.args}"/>[m
+[31m-                    </customize>[m
+[32m+[m[32m                    </customizeDebuggee>[m
+                 </j2seproject3:debug>[m
+             </sequential>[m
+         </macrodef>[m
+[36m@@ -641,14 +756,10 @@[m [mis divided into following sections:[m
+             <attribute default="" name="testMethod"/>[m
+             <sequential>[m
+                 <j2seproject3:test-debug-impl excludes="@{excludes}" includes="@{includes}" testincludes="@{testincludes}" testmethods="@{testmethods}">[m
+[31m-                    <customize>[m
+[31m-                        <classpath>[m
+[31m-                            <path path="${run.test.classpath}"/>[m
+[31m-                        </classpath>[m
+[31m-                        <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>[m
+[32m+[m[32m                    <customizeDebuggee>[m
+                         <jvmarg line="${run.jvmargs}"/>[m
+                         <jvmarg line="${run.jvmargs.ide}"/>[m
+[31m-                    </customize>[m
+[32m+[m[32m                    </customizeDebuggee>[m
+                 </j2seproject3:test-debug-impl>[m
+             </sequential>[m
+         </macrodef>[m
+[36m@@ -728,10 +839,14 @@[m [mis divided into following sections:[m
+     <target depends="-init-debug-args" name="-init-macrodef-nbjpda">[m
+         <macrodef name="nbjpdastart" uri="http://www.netbeans.org/ns/j2se-project/1">[m
+             <attribute default="${main.class}" name="name"/>[m
+[32m+[m[32m            <attribute default="${debug.modulepath}" name="modulepath"/>[m
+             <attribute default="${debug.classpath}" name="classpath"/>[m
+             <attribute default="" name="stopclassname"/>[m
+             <sequential>[m
+                 <nbjpdastart addressproperty="jpda.address" name="@{name}" stopclassname="@{stopclassname}" transport="${debug-transport}">[m
+[32m+[m[32m                    <modulepath>[m
+[32m+[m[32m                        <path path="@{modulepath}"/>[m
+[32m+[m[32m                    </modulepath>[m
+                     <classpath>[m
+                         <path path="@{classpath}"/>[m
+                     </classpath>[m
+[36m@@ -750,18 +865,6 @@[m [mis divided into following sections:[m
+         </macrodef>[m
+     </target>[m
+     <target name="-init-debug-args">[m
+[31m-        <property name="version-output" value="java version &quot;${ant.java.version}"/>[m
+[31m-        <condition property="have-jdk-older-than-1.4">[m
+[31m-            <or>[m
+[31m-                <contains string="${version-output}" substring="java version &quot;1.0"/>[m
+[31m-                <contains string="${version-output}" substring="java version &quot;1.1"/>[m
+[31m-                <contains string="${version-output}" substring="java version &quot;1.2"/>[m
+[31m-                <contains string="${version-output}" substring="java version &quot;1.3"/>[m
+[31m-            </or>[m
+[31m-        </condition>[m
+[31m-        <condition else="-Xdebug" property="debug-args-line" value="-Xdebug -Xnoagent -Djava.compiler=none">[m
+[31m-            <istrue value="${have-jdk-older-than-1.4}"/>[m
+[31m-        </condition>[m
+         <condition else="dt_socket" property="debug-transport-by-os" value="dt_shmem">[m
+             <os family="windows"/>[m
+         </condition>[m
+[36m@@ -771,21 +874,79 @@[m [mis divided into following sections:[m
+     </target>[m
+     <target depends="-init-debug-args" name="-init-macrodef-debug">[m
+         <macrodef name="debug" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+[32m+[m[32m            <attribute default="${module.name}" name="modulename"/>[m
+             <attribute default="${main.class}" name="classname"/>[m
+[32m+[m[32m            <attribute default="${debug.modulepath}" name="modulepath"/>[m
+             <attribute default="${debug.classpath}" name="classpath"/>[m
+[32m+[m[32m            <element name="customizeDebuggee" optional="true"/>[m
+[32m+[m[32m            <sequential>[m
+[32m+[m[32m                <j2seproject1:java classname="@{classname}" classpath="@{classpath}" modulename="@{modulename}" modulepath="@{modulepath}">[m
+[32m+[m[32m                    <customize>[m
+[32m+[m[32m                        <jvmarg value="-agentlib:jdwp=transport=${debug-transport},address=${jpda.address}"/>[m
+[32m+[m[32m                        <customizeDebuggee/>[m
+[32m+[m[32m                    </customize>[m
+[32m+[m[32m                </j2seproject1:java>[m
+[32m+[m[32m            </sequential>[m
+[32m+[m[32m        </macrodef>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-init-source-module-properties" if="named.module.internal" name="-init-macrodef-java-with-module">[m
+[32m+[m[32m        <macrodef name="java" uri="http://www.netbeans.org/ns/j2se-project/1">[m
+[32m+[m[32m            <attribute default="${module.name}" name="modulename"/>[m
+[32m+[m[32m            <attribute default="${main.class}" name="classname"/>[m
+[32m+[m[32m            <attribute default="${run.modulepath}" name="modulepath"/>[m
+[32m+[m[32m            <attribute default="${run.upgrademodulepath}" name="upgrademodulepath"/>[m
+[32m+[m[32m            <attribute default="${run.classpath}" name="classpath"/>[m
+[32m+[m[32m            <attribute default="jvm" name="jvm"/>[m
+             <element name="customize" optional="true"/>[m
+             <sequential>[m
+[31m-                <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true">[m
+[31m-                    <jvmarg line="${endorsed.classpath.cmd.line.arg}"/>[m
+[31m-                    <jvmarg line="${debug-args-line}"/>[m
+[31m-                    <jvmarg value="-Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>[m
+[32m+[m[32m                <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true" module="@{modulename}">[m
+[32m+[m[32m                    <classpath>[m
+[32m+[m[32m                        <path path="@{classpath}"/>[m
+[32m+[m[32m                    </classpath>[m
+[32m+[m[32m                    <modulepath>[m
+[32m+[m[32m                        <pathelement path="@{modulepath}"/>[m
+[32m+[m[32m                        <pathelement location="${module.build.classes.dir}"/>[m
+[32m+[m[32m                    </modulepath>[m
+[32m+[m[32m                    <upgrademodulepath>[m
+[32m+[m[32m                        <path path="@{upgrademodulepath}"/>[m
+[32m+[m[32m                    </upgrademodulepath>[m
+                     <jvmarg value="-Dfile.encoding=${runtime.encoding}"/>[m
+                     <redirector errorencoding="${runtime.encoding}" inputencoding="${runtime.encoding}" outputencoding="${runtime.encoding}"/>[m
+                     <jvmarg line="${run.jvmargs}"/>[m
+                     <jvmarg line="${run.jvmargs.ide}"/>[m
+[32m+[m[32m                    <syspropertyset>[m
+[32m+[m[32m                        <propertyref prefix="run-sys-prop."/>[m
+[32m+[m[32m                        <mapper from="run-sys-prop.*" to="*" type="glob"/>[m
+[32m+[m[32m                    </syspropertyset>[m
+[32m+[m[32m                    <customize/>[m
+[32m+[m[32m                </java>[m
+[32m+[m[32m            </sequential>[m
+[32m+[m[32m        </macrodef>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-init-source-module-properties" if="unnamed.module.internal" name="-init-macrodef-java-with-unnamed-module">[m
+[32m+[m[32m        <macrodef name="java" uri="http://www.netbeans.org/ns/j2se-project/1">[m
+[32m+[m[32m            <attribute default="" name="modulename"/>[m
+[32m+[m[32m            <attribute default="${main.class}" name="classname"/>[m
+[32m+[m[32m            <attribute default="${run.modulepath}" name="modulepath"/>[m
+[32m+[m[32m            <attribute default="${run.upgrademodulepath}" name="upgrademodulepath"/>[m
+[32m+[m[32m            <attribute default="${run.classpath}" name="classpath"/>[m
+[32m+[m[32m            <attribute default="jvm" name="jvm"/>[m
+[32m+[m[32m            <element name="customize" optional="true"/>[m
+[32m+[m[32m            <sequential>[m
+[32m+[m[32m                <java classname="@{classname}" dir="${work.dir}" failonerror="${java.failonerror}" fork="true">[m
+                     <classpath>[m
+                         <path path="@{classpath}"/>[m
+                     </classpath>[m
+[32m+[m[32m                    <modulepath>[m
+[32m+[m[32m                        <path path="@{modulepath}"/>[m
+[32m+[m[32m                    </modulepath>[m
+[32m+[m[32m                    <upgrademodulepath>[m
+[32m+[m[32m                        <path path="@{upgrademodulepath}"/>[m
+[32m+[m[32m                    </upgrademodulepath>[m
+[32m+[m[32m                    <jvmarg value="-Dfile.encoding=${runtime.encoding}"/>[m
+[32m+[m[32m                    <redirector errorencoding="${runtime.encoding}" inputencoding="${runtime.encoding}" outputencoding="${runtime.encoding}"/>[m
+[32m+[m[32m                    <jvmarg line="${run.jvmargs}"/>[m
+[32m+[m[32m                    <jvmarg line="${run.jvmargs.ide}"/>[m
+                     <syspropertyset>[m
+                         <propertyref prefix="run-sys-prop."/>[m
+                         <mapper from="run-sys-prop.*" to="*" type="glob"/>[m
+[36m@@ -795,9 +956,11 @@[m [mis divided into following sections:[m
+             </sequential>[m
+         </macrodef>[m
+     </target>[m
+[31m-    <target name="-init-macrodef-java">[m
+[32m+[m[32m    <target depends="-init-source-module-properties" name="-init-macrodef-java-without-module" unless="modules.supported.internal">[m
+         <macrodef name="java" uri="http://www.netbeans.org/ns/j2se-project/1">[m
+[32m+[m[32m            <attribute default="" name="modulename"/>[m
+             <attribute default="${main.class}" name="classname"/>[m
+[32m+[m[32m            <attribute default="" name="modulepath"/>[m
+             <attribute default="${run.classpath}" name="classpath"/>[m
+             <attribute default="jvm" name="jvm"/>[m
+             <element name="customize" optional="true"/>[m
+[36m@@ -820,6 +983,7 @@[m [mis divided into following sections:[m
+             </sequential>[m
+         </macrodef>[m
+     </target>[m
+[32m+[m[32m    <target depends="-init-macrodef-java-with-module, -init-macrodef-java-with-unnamed-module, -init-macrodef-java-without-module" name="-init-macrodef-java"/>[m
+     <target name="-init-macrodef-copylibs">[m
+         <macrodef name="copylibs" uri="http://www.netbeans.org/ns/j2se-project/3">[m
+             <attribute default="${manifest.file}" name="manifest"/>[m
+[36m@@ -909,7 +1073,9 @@[m [mis divided into following sections:[m
+         <available file="${build.classes.dir}/.netbeans_automatic_build" property="netbeans.automatic.build"/>[m
+     </target>[m
+     <target depends="init" if="netbeans.automatic.build" name="-clean-after-automatic-build">[m
+[31m-        <antcall target="clean"/>[m
+[32m+[m[32m        <antcall target="clean">[m
+[32m+[m[32m            <param name="no.dependencies" value="true"/>[m
+[32m+[m[32m        </antcall>[m
+     </target>[m
+     <target depends="init,deps-jar" name="-pre-pre-compile">[m
+         <mkdir dir="${build.classes.dir}"/>[m
+[36m@@ -950,7 +1116,7 @@[m [mis divided into following sections:[m
+     <target depends="init,deps-jar,-pre-pre-compile" name="-do-compile-single">[m
+         <fail unless="javac.includes">Must select some files in the IDE or set javac.includes</fail>[m
+         <j2seproject3:force-recompile/>[m
+[31m-        <j2seproject3:javac excludes="" gensrcdir="${build.generated.sources.dir}" includes="${javac.includes}" sourcepath="${src.dir}"/>[m
+[32m+[m[32m        <j2seproject3:javac excludes="" gensrcdir="${build.generated.sources.dir}" includes="${javac.includes}, module-info.java" sourcepath="${src.dir}"/>[m
+     </target>[m
+     <target name="-post-compile-single">[m
+         <!-- Empty placeholder for easier customization. -->[m
+[36m@@ -970,6 +1136,25 @@[m [mis divided into following sections:[m
+         <!-- Empty placeholder for easier customization. -->[m
+         <!-- You can override this target in the ../build.xml file. -->[m
+     </target>[m
+[32m+[m[32m    <target depends="init,compile" name="-check-module-main-class">[m
+[32m+[m[32m        <pathconvert property="main.class.file">[m
+[32m+[m[32m            <string value="${main.class}"/>[m
+[32m+[m[32m            <unpackagemapper from="*" to="*.class"/>[m
+[32m+[m[32m        </pathconvert>[m
+[32m+[m[32m        <condition property="do.module.main.class">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="main.class.available"/>[m
+[32m+[m[32m                <available file="${build.classes.dir}/module-info.class"/>[m
+[32m+[m[32m                <available file="${build.classes.dir}/${main.class.file}"/>[m
+[32m+[m[32m                <isset property="libs.CopyLibs.classpath"/>[m
+[32m+[m[32m                <available classname="org.netbeans.modules.java.j2seproject.moduletask.ModuleMainClass" classpath="${libs.CopyLibs.classpath}"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-check-module-main-class" if="do.module.main.class" name="-set-module-main-class">[m
+[32m+[m[32m        <taskdef classname="org.netbeans.modules.java.j2seproject.moduletask.ModuleMainClass" classpath="${libs.CopyLibs.classpath}" name="modulemainclass"/>[m
+[32m+[m[32m        <modulemainclass failonerror="false" mainclass="${main.class}" moduleinfo="${build.classes.dir}/module-info.class"/>[m
+[32m+[m[32m    </target>[m
+     <target depends="init" if="do.archive" name="-do-jar-create-manifest" unless="manifest.available">[m
+         <tempfile deleteonexit="true" destdir="${build.dir}" property="tmp.manifest.file"/>[m
+         <touch file="${tmp.manifest.file}" verbose="false"/>[m
+[36m@@ -996,21 +1181,61 @@[m [mis divided into following sections:[m
+             <attribute name="SplashScreen-Image" value="META-INF/${splashscreen.basename}"/>[m
+         </manifest>[m
+     </target>[m
+[31m-    <target depends="init,-init-macrodef-copylibs,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen" if="do.mkdist" name="-do-jar-copylibs">[m
+[32m+[m[32m    <target depends="init,compile" name="-check-do-mkdist">[m
+[32m+[m[32m        <condition property="do.mkdist">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="do.archive"/>[m
+[32m+[m[32m                <isset property="libs.CopyLibs.classpath"/>[m
+[32m+[m[32m                <not>[m
+[32m+[m[32m                    <istrue value="${mkdist.disabled}"/>[m
+[32m+[m[32m                </not>[m
+[32m+[m[32m                <not>[m
+[32m+[m[32m                    <available file="${build.classes.dir}/module-info.class"/>[m
+[32m+[m[32m                </not>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="init,-init-macrodef-copylibs,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen,-check-do-mkdist" if="do.mkdist" name="-do-jar-copylibs">[m
+         <j2seproject3:copylibs manifest="${tmp.manifest.file}"/>[m
+         <echo level="info">To run this application from the command line without Ant, try:</echo>[m
+         <property location="${dist.jar}" name="dist.jar.resolved"/>[m
+         <echo level="info">java -jar "${dist.jar.resolved}"</echo>[m
+     </target>[m
+[31m-    <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen" if="do.archive" name="-do-jar-jar" unless="do.mkdist">[m
+[32m+[m[32m    <target depends="init,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen,-check-do-mkdist" if="do.archive" name="-do-jar-jar" unless="do.mkdist">[m
+         <j2seproject1:jar manifest="${tmp.manifest.file}"/>[m
+         <property location="${build.classes.dir}" name="build.classes.dir.resolved"/>[m
+         <property location="${dist.jar}" name="dist.jar.resolved"/>[m
+[32m+[m[32m        <condition else="${dist.jar.resolved}" property="jar.usage.message.class.path.replacement" value="">[m
+[32m+[m[32m            <isset property="named.module.internal"/>[m
+[32m+[m[32m        </condition>[m
+         <pathconvert property="run.classpath.with.dist.jar">[m
+             <path path="${run.classpath}"/>[m
+[32m+[m[32m            <map from="${build.classes.dir.resolved}" to="${jar.usage.message.class.path.replacement}"/>[m
+[32m+[m[32m        </pathconvert>[m
+[32m+[m[32m        <pathconvert property="run.modulepath.with.dist.jar">[m
+[32m+[m[32m            <path location="${dist.jar.resolved}"/>[m
+[32m+[m[32m            <path path="${run.modulepath}"/>[m
+             <map from="${build.classes.dir.resolved}" to="${dist.jar.resolved}"/>[m
+         </pathconvert>[m
+[31m-        <condition else="" property="jar.usage.message" value="To run this application from the command line without Ant, try:${line.separator}${platform.java} -cp ${run.classpath.with.dist.jar} ${main.class}">[m
+[32m+[m[32m        <condition else="${run.modulepath}" property="jar.usage.message.run.modulepath.with.dist.jar" value="${run.modulepath.with.dist.jar}">[m
+[32m+[m[32m            <isset property="named.module.internal"/>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition else="" property="jar.usage.message.module.path" value=" -p ${jar.usage.message.run.modulepath.with.dist.jar}">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="modules.supported.internal"/>[m
+[32m+[m[32m                <length length="0" string="${jar.usage.message.run.modulepath.with.dist.jar}" when="greater"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition else="" property="jar.usage.message.class.path" value=" -cp ${run.classpath.with.dist.jar}">[m
+[32m+[m[32m            <length length="0" string="${run.classpath.with.dist.jar}" when="greater"/>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition else="/${main.class}" property="jar.usage.message.main.class.class.selector" value="">[m
+[32m+[m[32m            <isset property="do.module.main.class"/>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition else=" ${main.class}" property="jar.usage.message.main.class" value=" -m ${module.name}${jar.usage.message.main.class.class.selector}">[m
+[32m+[m[32m            <isset property="named.module.internal"/>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition else="" property="jar.usage.message" value="To run this application from the command line without Ant, try:${line.separator}${platform.java}${jar.usage.message.module.path}${jar.usage.message.class.path}${jar.usage.message.main.class}">[m
+             <isset property="main.class.available"/>[m
+         </condition>[m
+         <condition else="debug" property="jar.usage.level" value="info">[m
+[36m@@ -1029,8 +1254,73 @@[m [mis divided into following sections:[m
+         <!-- Empty placeholder for easier customization. -->[m
+         <!-- You can override this target in the ../build.xml file. -->[m
+     </target>[m
+[31m-    <target depends="init,compile,-pre-jar,-do-jar-without-libraries,-do-jar-with-libraries,-post-jar" name="-do-jar"/>[m
+[31m-    <target depends="init,compile,-pre-jar,-do-jar,-post-jar" description="Build JAR." name="jar"/>[m
+[32m+[m[32m    <target depends="init,compile,-pre-jar,-set-module-main-class,-do-jar-without-libraries,-do-jar-with-libraries,-post-jar" name="-do-jar"/>[m
+[32m+[m[32m    <target depends="init,compile,-pre-jar,-do-jar,-post-jar,deploy" description="Build JAR." name="jar"/>[m
+[32m+[m[32m    <!--[m
+[32m+[m[32m                =================[m
+[32m+[m[32m                DEPLOY SECTION[m
+[32m+[m[32m                =================[m
+[32m+[m[32m            -->[m
+[32m+[m[32m    <target name="-pre-deploy">[m
+[32m+[m[32m        <!-- Empty placeholder for easier customization. -->[m
+[32m+[m[32m        <!-- You can override this target in the ../build.xml file. -->[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="init" name="-check-jlink">[m
+[32m+[m[32m        <condition property="do.jlink.internal">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <istrue value="${do.jlink}"/>[m
+[32m+[m[32m                <isset property="do.archive"/>[m
+[32m+[m[32m                <isset property="named.module.internal"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="init,-do-jar,-post-jar,-pre-deploy,-check-jlink" if="do.jlink.internal" name="-do-deploy">[m
+[32m+[m[32m        <delete dir="${dist.jlink.dir}" failonerror="false" quiet="true"/>[m
+[32m+[m[32m        <property name="jlink.launcher.name" value="${application.title}"/>[m
+[32m+[m[32m        <condition else="${module.name}" property="jlink.add.modules" value="${module.name},${jlink.additionalmodules}">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="jlink.additionalmodules"/>[m
+[32m+[m[32m                <length length="0" string="${jlink.additionalmodules}" when="greater"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition property="jlink.do.strip.internal">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="jlink.strip"/>[m
+[32m+[m[32m                <istrue value="${jlink.strip}"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition property="jlink.do.additionalparam.internal">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="jlink.additionalparam"/>[m
+[32m+[m[32m                <length length="0" string="${jlink.additionalparam}" when="greater"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition property="jlink.do.launcher.internal">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <istrue value="${jlink.launcher}"/>[m
+[32m+[m[32m                <isset property="main.class.available"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <property name="platform.jlink" value="${jdk.home}/bin/jlink"/>[m
+[32m+[m[32m        <property name="jlink.systemmodules.internal" value="${jdk.home}/jmods"/>[m
+[32m+[m[32m        <exec executable="${platform.jlink}">[m
+[32m+[m[32m            <arg value="--module-path"/>[m
+[32m+[m[32m            <arg path="${jlink.systemmodules.internal}:${run.modulepath}:${dist.jar}"/>[m
+[32m+[m[32m            <arg value="--add-modules"/>[m
+[32m+[m[32m            <arg value="${jlink.add.modules}"/>[m
+[32m+[m[32m            <arg if:set="jlink.do.strip.internal" value="--strip-debug"/>[m
+[32m+[m[32m            <arg if:set="jlink.do.launcher.internal" value="--launcher"/>[m
+[32m+[m[32m            <arg if:set="jlink.do.launcher.internal" value="${jlink.launcher.name}=${module.name}/${main.class}"/>[m
+[32m+[m[32m            <arg if:set="jlink.do.additionalparam.internal" line="${jlink.additionalparam}"/>[m
+[32m+[m[32m            <arg value="--output"/>[m
+[32m+[m[32m            <arg value="${dist.jlink.output}"/>[m
+[32m+[m[32m        </exec>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target name="-post-deploy">[m
+[32m+[m[32m        <!-- Empty placeholder for easier customization. -->[m
+[32m+[m[32m        <!-- You can override this target in the ../build.xml file. -->[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-do-jar,-post-jar,-pre-deploy,-do-deploy,-post-deploy" name="deploy"/>[m
+     <!--[m
+                 =================[m
+                 EXECUTION SECTION[m
+[36m@@ -1067,9 +1357,9 @@[m [mis divided into following sections:[m
+     </target>[m
+     <target depends="init,compile" name="-debug-start-debuggee">[m
+         <j2seproject3:debug>[m
+[31m-            <customize>[m
+[32m+[m[32m            <customizeDebuggee>[m
+                 <arg line="${application.args}"/>[m
+[31m-            </customize>[m
+[32m+[m[32m            </customizeDebuggee>[m
+         </j2seproject3:debug>[m
+     </target>[m
+     <target depends="init,compile,-debug-start-debugger,-debug-start-debuggee" description="Debug project in IDE." if="netbeans.home" name="debug"/>[m
+[36m@@ -1135,28 +1425,24 @@[m [mis divided into following sections:[m
+             </customize>[m
+         </profile>[m
+     </target>[m
+[31m-    <target depends="profile-init,compile-test-single" if="profiler.info.jvmargs.agent" name="-profile-test-single-pre72">[m
+[32m+[m[32m    <target depends="-init-macrodef-junit,profile-init,compile-test-single" if="profiler.info.jvmargs.agent" name="-profile-test-single-pre72">[m
+         <fail unless="netbeans.home">This target only works when run from inside the NetBeans IDE.</fail>[m
+         <nbprofiledirect>[m
+             <classpath>[m
+                 <path path="${run.test.classpath}"/>[m
+             </classpath>[m
+         </nbprofiledirect>[m
+[31m-        <junit dir="${profiler.info.dir}" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" jvm="${profiler.info.jvm}" showoutput="true">[m
+[31m-            <env key="${profiler.info.pathvar}" path="${profiler.info.agentpath}:${profiler.current.path}"/>[m
+[31m-            <jvmarg value="${profiler.info.jvmargs.agent}"/>[m
+[31m-            <jvmarg line="${profiler.info.jvmargs}"/>[m
+[31m-            <test name="${profile.class}"/>[m
+[31m-            <classpath>[m
+[31m-                <path path="${run.test.classpath}"/>[m
+[31m-            </classpath>[m
+[31m-            <syspropertyset>[m
+[31m-                <propertyref prefix="test-sys-prop."/>[m
+[31m-                <mapper from="test-sys-prop.*" to="*" type="glob"/>[m
+[31m-            </syspropertyset>[m
+[31m-            <formatter type="brief" usefile="false"/>[m
+[31m-            <formatter type="xml"/>[m
+[31m-        </junit>[m
+[32m+[m[32m        <j2seproject3:junit excludes="${excludes}" includes="${includes}" testincludes="${profile.class}" testmethods="">[m
+[32m+[m[32m            <customize>[m
+[32m+[m[32m                <jvmarg value="-agentlib:jdwp=transport=${debug-transport},address=${jpda.address}"/>[m
+[32m+[m[32m                <env key="${profiler.info.pathvar}" path="${profiler.info.agentpath}:${profiler.current.path}"/>[m
+[32m+[m[32m                <jvmarg value="${profiler.info.jvmargs.agent}"/>[m
+[32m+[m[32m                <jvmarg line="${profiler.info.jvmargs}"/>[m
+[32m+[m[32m                <classpath>[m
+[32m+[m[32m                    <path path="${run.test.classpath}"/>[m
+[32m+[m[32m                </classpath>[m
+[32m+[m[32m            </customize>[m
+[32m+[m[32m        </j2seproject3:junit>[m
+     </target>[m
+     <!--[m
+                 end of pre NB72 profiling section[m
+[36m@@ -1212,6 +1498,12 @@[m [mis divided into following sections:[m
+         <condition else="" property="bug5101868workaround" value="*.java">[m
+             <matches pattern="1\.[56](\..*)?" string="${java.version}"/>[m
+         </condition>[m
+[32m+[m[32m        <condition else="" property="javadoc.html5.cmd.line.arg" value="-html5">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="javadoc.html5"/>[m
+[32m+[m[32m                <available file="${jdk.home}${file.separator}lib${file.separator}jrt-fs.jar"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+         <javadoc additionalparam="-J-Dfile.encoding=${file.encoding} ${javadoc.additionalparam}" author="${javadoc.author}" charset="UTF-8" destdir="${dist.javadoc.dir}" docencoding="UTF-8" encoding="${javadoc.encoding.used}" failonerror="true" noindex="${javadoc.noindex}" nonavbar="${javadoc.nonavbar}" notree="${javadoc.notree}" private="${javadoc.private}" source="${javac.source}" splitindex="${javadoc.splitindex}" use="${javadoc.use}" useexternalfile="true" version="${javadoc.version}" windowtitle="${javadoc.windowtitle}">[m
+             <classpath>[m
+                 <path path="${javac.classpath}"/>[m
+[36m@@ -1224,6 +1516,7 @@[m [mis divided into following sections:[m
+                 <exclude name="*.java"/>[m
+             </fileset>[m
+             <arg line="${javadoc.endorsed.classpath.cmd.line.arg}"/>[m
+[32m+[m[32m            <arg line="${javadoc.html5.cmd.line.arg}"/>[m
+         </javadoc>[m
+         <copy todir="${dist.javadoc.dir}">[m
+             <fileset dir="${src.dir}" excludes="${excludes}" includes="${includes}">[m
+[36m@@ -1250,11 +1543,63 @@[m [mis divided into following sections:[m
+         <!-- Empty placeholder for easier customization. -->[m
+         <!-- You can override this target in the ../build.xml file. -->[m
+     </target>[m
+[32m+[m[32m    <target depends="-init-source-module-properties" if="named.module.internal" name="-init-test-javac-module-properties-with-module">[m
+[32m+[m[32m        <j2seproject3:modulename property="test.module.name" sourcepath="${test.src.dir}"/>[m
+[32m+[m[32m        <condition else="${empty.dir}" property="javac.test.sourcepath" value="${test.src.dir}">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="test.module.name"/>[m
+[32m+[m[32m                <length length="0" string="${test.module.name}" when="greater"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <condition else="--patch-module ${module.name}=${test.src.dir} --add-reads ${module.name}=ALL-UNNAMED" property="javac.test.compilerargs" value="--add-reads ${test.module.name}=ALL-UNNAMED">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="test.module.name"/>[m
+[32m+[m[32m                <length length="0" string="${test.module.name}" when="greater"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-init-source-module-properties" if="named.module.internal" name="-init-test-run-module-properties">[m
+[32m+[m[32m        <condition else="${module.name}" property="run.test.addexport.source.module.internal" value="${test.module.name}">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="test.module.name"/>[m
+[32m+[m[32m                <length length="0" string="${test.module.name}" when="greater"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m        <fileset dir="${build.test.classes.dir}" id="run.test.packages.internal" includes="**/*.class"/>[m
+[32m+[m[32m        <property location="${build.test.classes.dir}" name="build.test.classes.dir.abs.internal"/>[m
+[32m+[m[32m        <pathconvert pathsep=" " property="run.test.addexports.internal" refid="run.test.packages.internal">[m
+[32m+[m[32m            <chainedmapper>[m
+[32m+[m[32m                <regexpmapper from="^(.*)\Q${file.separator}\E.*\.class$$" to="\1"/>[m
+[32m+[m[32m                <filtermapper>[m
+[32m+[m[32m                    <uniqfilter/>[m
+[32m+[m[32m                    <replacestring from="${build.test.classes.dir.abs.internal}" to=""/>[m
+[32m+[m[32m                </filtermapper>[m
+[32m+[m[32m                <cutdirsmapper dirs="1"/>[m
+[32m+[m[32m                <packagemapper from="*" to="--add-exports ${run.test.addexport.source.module.internal}/*=ALL-UNNAMED"/>[m
+[32m+[m[32m            </chainedmapper>[m
+[32m+[m[32m        </pathconvert>[m
+[32m+[m[32m        <condition else="--patch-module ${module.name}=${build.test.classes.dir} --add-modules ${module.name} --add-reads ${module.name}=ALL-UNNAMED ${run.test.addexports.internal}" property="run.test.jvmargs" value="--add-modules ${test.module.name} --add-reads ${test.module.name}=ALL-UNNAMED ${run.test.addexports.internal}">[m
+[32m+[m[32m            <and>[m
+[32m+[m[32m                <isset property="test.module.name"/>[m
+[32m+[m[32m                <length length="0" string="${test.module.name}" when="greater"/>[m
+[32m+[m[32m            </and>[m
+[32m+[m[32m        </condition>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-init-source-module-properties" name="-init-test-module-properties-without-module" unless="named.module.internal">[m
+[32m+[m[32m        <property name="javac.test.sourcepath" value="${empty.dir}"/>[m
+[32m+[m[32m        <property name="javac.test.compilerargs" value=""/>[m
+[32m+[m[32m        <property name="run.test.jvmargs" value=""/>[m
+[32m+[m[32m    </target>[m
+[32m+[m[32m    <target depends="-init-test-javac-module-properties-with-module,-init-test-module-properties-without-module" name="-init-test-module-properties"/>[m
+     <target if="do.depend.true" name="-compile-test-depend">[m
+         <j2seproject3:depend classpath="${javac.test.classpath}" destdir="${build.test.classes.dir}" srcdir="${test.src.dir}"/>[m
+     </target>[m
+[31m-    <target depends="init,deps-jar,compile,-pre-pre-compile-test,-pre-compile-test,-compile-test-depend" if="have.tests" name="-do-compile-test">[m
+[31m-        <j2seproject3:javac apgeneratedsrcdir="${build.test.classes.dir}" classpath="${javac.test.classpath}" debug="true" destdir="${build.test.classes.dir}" processorpath="${javac.test.processorpath}" srcdir="${test.src.dir}"/>[m
+[32m+[m[32m    <target depends="init,deps-jar,compile,-init-test-module-properties,-pre-pre-compile-test,-pre-compile-test,-compile-test-depend" if="have.tests" name="-do-compile-test">[m
+[32m+[m[32m        <j2seproject3:javac apgeneratedsrcdir="${build.test.classes.dir}" classpath="${javac.test.classpath}" debug="true" destdir="${build.test.classes.dir}" modulepath="${javac.test.modulepath}" processorpath="${javac.test.processorpath}" sourcepath="${javac.test.sourcepath}" srcdir="${test.src.dir}">[m
+[32m+[m[32m            <customize>[m
+[32m+[m[32m                <compilerarg line="${javac.test.compilerargs}"/>[m
+[32m+[m[32m            </customize>[m
+[32m+[m[32m        </j2seproject3:javac>[m
+         <copy todir="${build.test.classes.dir}">[m
+             <fileset dir="${test.src.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>[m
+         </copy>[m
+[36m@@ -1268,10 +1613,14 @@[m [mis divided into following sections:[m
+         <!-- Empty placeholder for easier customization. -->[m
+         <!-- You can override this target in the ../build.xml file. -->[m
+     </target>[m
+[31m-    <target depends="init,deps-jar,compile,-pre-pre-compile-test,-pre-compile-test-single" if="have.tests" name="-do-compile-test-single">[m
+[32m+[m[32m    <target depends="init,deps-jar,compile,-init-test-module-properties,-pre-pre-compile-test,-pre-compile-test-single" if="have.tests" name="-do-compile-test-single">[m
+         <fail unless="javac.includes">Must select some files in the IDE or set javac.includes</fail>[m
+         <j2seproject3:force-recompile destdir="${build.test.classes.dir}"/>[m
+[31m-        <j2seproject3:javac apgeneratedsrcdir="${build.test.classes.dir}" classpath="${javac.test.classpath}" debug="true" destdir="${build.test.classes.dir}" excludes="" includes="${javac.includes}" processorpath="${javac.test.processorpath}" sourcepath="${test.src.dir}" srcdir="${test.src.dir}"/>[m
+[32m+[m[32m        <j2seproject3:javac apgeneratedsrcdir="${build.test.classes.dir}" classpath="${javac.test.classpath}" debug="true" destdir="${build.test.classes.dir}" excludes="" includes="${javac.includes}, module-info.java" modulepath="${javac.test.modulepath}" processorpath="${javac.test.processorpath}" sourcepath="${test.src.dir}" srcdir="${test.src.dir}">[m
+[32m+[m[32m            <customize>[m
+[32m+[m[32m                <compilerarg line="${javac.test.compilerargs}"/>[m
+[32m+[m[32m            </customize>[m
+[32m+[m[32m        </j2seproject3:javac>[m
+         <copy todir="${build.test.classes.dir}">[m
+             <fileset dir="${test.src.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>[m
+         </copy>[m
+[36m@@ -1289,7 +1638,7 @@[m [mis divided into following sections:[m
+     <target depends="init" if="have.tests" name="-pre-test-run">[m
+         <mkdir dir="${build.test.results.dir}"/>[m
+     </target>[m
+[31m-    <target depends="init,compile-test,-pre-test-run" if="have.tests" name="-do-test-run">[m
+[32m+[m[32m    <target depends="init,compile-test,-init-test-run-module-properties,-pre-test-run" if="have.tests" name="-do-test-run">[m
+         <j2seproject3:test includes="${includes}" testincludes="**/*Test.java"/>[m
+     </target>[m
+     <target depends="init,compile-test,-pre-test-run,-do-test-run" if="have.tests" name="-post-test-run">[m
+[36m@@ -1301,14 +1650,14 @@[m [mis divided into following sections:[m
+     <target depends="init" if="have.tests" name="-pre-test-run-single">[m
+         <mkdir dir="${build.test.results.dir}"/>[m
+     </target>[m
+[31m-    <target depends="init,compile-test-single,-pre-test-run-single" if="have.tests" name="-do-test-run-single">[m
+[32m+[m[32m    <target depends="init,compile-test-single,-init-test-run-module-properties,-pre-test-run-single" if="have.tests" name="-do-test-run-single">[m
+         <fail unless="test.includes">Must select some files in the IDE or set test.includes</fail>[m
+         <j2seproject3:test excludes="" includes="${test.includes}" testincludes="${test.includes}"/>[m
+     </target>[m
+     <target depends="init,compile-test-single,-pre-test-run-single,-do-test-run-single" if="have.tests" name="-post-test-run-single">[m
+         <fail if="tests.failed" unless="ignore.failing.tests">Some tests failed; see details above.</fail>[m
+     </target>[m
+[31m-    <target depends="init,compile-test-single,-pre-test-run-single,-do-test-run-single,-post-test-run-single" description="Run single unit test." name="test-single"/>[m
+[32m+[m[32m    <target depends="init,compile-test-single,-init-test-run-module-properties,-pre-test-run-single,-do-test-run-single,-post-test-run-single" description="Run single unit test." name="test-single"/>[m
+     <target depends="init,compile-test-single,-pre-test-run-single" if="have.tests" name="-do-test-run-single-method">[m
+         <fail unless="test.class">Must select some files in the IDE or set test.class</fail>[m
+         <fail unless="test.method">Must select some method in the IDE or set test.method</fail>[m
+[36m@@ -1317,7 +1666,7 @@[m [mis divided into following sections:[m
+     <target depends="init,compile-test-single,-pre-test-run-single,-do-test-run-single-method" if="have.tests" name="-post-test-run-single-method">[m
+         <fail if="tests.failed" unless="ignore.failing.tests">Some tests failed; see details above.</fail>[m
+     </target>[m
+[31m-    <target depends="init,compile-test-single,-pre-test-run-single,-do-test-run-single-method,-post-test-run-single-method" description="Run single unit test." name="test-single-method"/>[m
+[32m+[m[32m    <target depends="init,compile-test-single,-init-test-run-module-properties,-pre-test-run-single,-do-test-run-single-method,-post-test-run-single-method" description="Run single unit test." name="test-single-method"/>[m
+     <!--[m
+                 =======================[m
+                 TEST DEBUGGING SECTION[m
+[36m@@ -1335,8 +1684,9 @@[m [mis divided into following sections:[m
+     <target depends="init,compile-test" if="netbeans.home+have.tests" name="-debug-start-debugger-test">[m
+         <j2seproject1:nbjpdastart classpath="${debug.test.classpath}" name="${test.class}"/>[m
+     </target>[m
+[31m-    <target depends="init,compile-test-single,-debug-start-debugger-test,-debug-start-debuggee-test" name="debug-test"/>[m
+[31m-    <target depends="init,compile-test-single,-debug-start-debugger-test,-debug-start-debuggee-test-method" name="debug-test-method"/>[m
+[32m+[m[32m    <target depends="init,compile-test-single,-init-test-run-module-properties,-debug-start-debugger-test,-debug-start-debuggee-test" name="debug-test"/>[m
+[32m+[m[32m    <target depends="init,compile-test-single,-init-test-run-module-properties,-debug-start-debugger-test,-debug-start-debuggee-test-method" name="debug-test-method"/>[m
+[32m+[m[32m    <target depends="debug-test-method" name="debug-single-method"/>[m
+     <target depends="init,-pre-debug-fix,compile-test-single" if="netbeans.home" name="-do-debug-fix-test">[m
+         <j2seproject1:nbjpdareload dir="${build.test.classes.dir}"/>[m
+     </target>[m
+[36m@@ -1362,9 +1712,9 @@[m [mis divided into following sections:[m
+     <target depends="init,compile-single" if="netbeans.home" name="-debug-start-debuggee-applet">[m
+         <fail unless="applet.url">Must select one file in the IDE or set applet.url</fail>[m
+         <j2seproject3:debug classname="sun.applet.AppletViewer">[m
+[31m-            <customize>[m
+[32m+[m[32m            <customizeDebuggee>[m
+                 <arg value="${applet.url}"/>[m
+[31m-            </customize>[m
+[32m+[m[32m            </customizeDebuggee>[m
+         </j2seproject3:debug>[m
+     </target>[m
+     <target depends="init,compile-single,-debug-start-debugger,-debug-start-debuggee-applet" if="netbeans.home" name="debug-applet"/>[m
+[36m@@ -1391,6 +1741,7 @@[m [mis divided into following sections:[m
+     </target>[m
+     <target depends="init" name="-do-clean">[m
+         <delete dir="${build.dir}"/>[m
+[32m+[m[32m        <delete dir="${dist.jlink.output}"/>[m
+         <delete dir="${dist.dir}" followsymlinks="false" includeemptydirs="true"/>[m
+     </target>[m
+     <target name="-post-clean">[m
+[1mdiff --git a/nbproject/genfiles.properties b/nbproject/genfiles.properties[m
+[1mindex 23407a1..4153f50 100644[m
+[1m--- a/nbproject/genfiles.properties[m
+[1m+++ b/nbproject/genfiles.properties[m
+[36m@@ -1,8 +1,8 @@[m
+ build.xml.data.CRC32=be79d478[m
+ build.xml.script.CRC32=ec963507[m
+[31m-build.xml.stylesheet.CRC32=8064a381@1.80.1.48[m
+[32m+[m[32mbuild.xml.stylesheet.CRC32=f85dc8f2@1.102.0.48[m
+ # This file is used by a NetBeans-based IDE to track changes in generated files such as build-impl.xml.[m
+ # Do not edit this file. You may delete it but then the IDE will never regenerate such files for you.[m
+ nbproject/build-impl.xml.data.CRC32=be79d478[m
+[31m-nbproject/build-impl.xml.script.CRC32=465d3459[m
+[31m-nbproject/build-impl.xml.stylesheet.CRC32=830a3534@1.80.1.48[m
+[32m+[m[32mnbproject/build-impl.xml.script.CRC32=a069096f[m
+[32m+[m[32mnbproject/build-impl.xml.stylesheet.CRC32=12e0a6c2@1.102.0.48[m
+[1mdiff --git a/nbproject/private/private.properties b/nbproject/private/private.properties[m
+[1mindex 3da84cc..7b20f57 100644[m
+[1m--- a/nbproject/private/private.properties[m
+[1m+++ b/nbproject/private/private.properties[m
+[36m@@ -1,2 +1,2 @@[m
+ compile.on.save=true[m
+[31m-user.properties.file=C:\\Users\\ITCA\\AppData\\Roaming\\NetBeans\\8.2\\build.properties[m
+[32m+[m[32muser.properties.file=C:\\Users\\Jonathan\\AppData\\Roaming\\NetBeans\\13\\build.properties[m
+[1mdiff --git a/nbproject/project.properties b/nbproject/project.properties[m
+[1mindex 915ec81..46a34ae 100644[m
+[1m--- a/nbproject/project.properties[m
+[1m+++ b/nbproject/project.properties[m
+[36m@@ -18,8 +18,12 @@[m [mbuild.test.results.dir=${build.dir}/test/results[m
+ #debug.transport=dt_socket[m
+ debug.classpath=\[m
+     ${run.classpath}[m
+[32m+[m[32mdebug.modulepath=\[m
+[32m+[m[32m    ${run.modulepath}[m
+ debug.test.classpath=\[m
+     ${run.test.classpath}[m
+[32m+[m[32mdebug.test.modulepath=\[m
+[32m+[m[32m    ${run.test.modulepath}[m
+ # Files in build.classes.dir which should be excluded from distribution jar[m
+ dist.archive.excludes=[m
+ # This directory is removed when the project is cleaned:[m
+[36m@@ -34,6 +38,8 @@[m [mjavac.classpath=[m
+ javac.compilerargs=[m
+ javac.deprecation=false[m
+ javac.external.vm=true[m
+[32m+[m[32mjavac.modulepath=[m
+[32m+[m[32mjavac.processormodulepath=[m
+ javac.processorpath=\[m
+     ${javac.classpath}[m
+ javac.source=1.8[m
+[36m@@ -41,6 +47,8 @@[m [mjavac.target=1.8[m
+ javac.test.classpath=\[m
+     ${javac.classpath}:\[m
+     ${build.classes.dir}[m
+[32m+[m[32mjavac.test.modulepath=\[m
+[32m+[m[32m    ${javac.modulepath}[m
+ javac.test.processorpath=\[m
+     ${javac.test.classpath}[m
+ javadoc.additionalparam=[m
+[36m@@ -66,9 +74,13 @@[m [mrun.classpath=\[m
+ # You may also define separate properties like run-sys-prop.name=value instead of -Dname=value.[m
+ # To set system properties for unit tests define test-sys-prop.name=value:[m
+ run.jvmargs=[m
+[32m+[m[32mrun.modulepath=\[m
+[32m+[m[32m    ${javac.modulepath}[m
+ run.test.classpath=\[m
+     ${javac.test.classpath}:\[m
+     ${build.test.classes.dir}[m
+[32m+[m[32mrun.test.modulepath=\[m
+[32m+[m[32m    ${javac.test.modulepath}[m
+ source.encoding=UTF-8[m
+ src.dir=src[m
+ test.src.dir=test[m
